@@ -25,6 +25,11 @@ http http://localhost:8080/all-orders
 
 ## Using Eureka
 
+Start the h2 database
+```bash
+mvn exec:java
+```
+
 Boot the Eureka server
 
 ```bash
@@ -34,11 +39,11 @@ mvn spring-boot:run
 Try to scale the application and launch 2 Spring Boot applications
 
 ```bash
-mvn spring-boot:run -Dspring.profiles.active=app-a
+mvn spring-boot:run
 
 and 
 
-mvn spring-boot:run -Dspring.profiles.active=app-b -Dserver.port=8081
+mvn spring-boot:run -Dserver.port=8081
 ```
 
 And now test 
