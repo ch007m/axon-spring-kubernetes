@@ -20,3 +20,49 @@ or using httpie tool
 http -f POST http://localhost:8080/ship-order
 http http://localhost:8080/all-orders
 ```
+
+Try to scale the application and launch 2 Spring Boot applications
+
+```bash
+mvn spring-boot:run -Dspring.profiles.active=app-a
+
+and 
+
+mvn spring-boot:run -Dspring.profiles.active=app-b -Dserver.port=8081
+```
+
+And now test 
+
+```bash
+http -s solarized http://localhost:8080/all-orders
+
+http -s solarized -f POST http://localhost:8080/ship-order
+http -s solarized -f POST http://localhost:8080/ship-order
+http -s solarized -f POST http://localhost:8080/ship-order
+
+http -s solarized http://localhost:8080/all-orders
+HTTP/1.1 200 
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 17 May 2019 11:27:43 GMT
+Transfer-Encoding: chunked
+
+[
+    {
+        "orderId": "4616b877-301a-4b0c-ba00-9ed3792c2933",
+        "orderStatus": "PLACED",
+        "product": "Deluxe Chair"
+    },
+    {
+        "orderId": "9be189a3-fc03-4072-b3d1-94651fe7d054",
+        "orderStatus": "SHIPPED",
+        "product": "Deluxe Chair"
+    },
+    {
+        "orderId": "5efca2aa-c5b8-475e-9fae-ff18b22f180c",
+        "orderStatus": "SHIPPED",
+        "product": "Deluxe Chair"
+    }
+]
+http -s solarized http://localhost:8081/all-orders
+[] // THER IS AN ISSUE
+```
