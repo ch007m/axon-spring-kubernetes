@@ -27,23 +27,24 @@ http http://localhost:8080/all-orders
 
 Start the h2 database
 ```bash
-mvn exec:java
+mvn exec:java -pl h2-server
 ```
 
 Boot the Eureka server
 
 ```bash
-mvn spring-boot:run
+mvn spring-boot:run -pl eureka-server
 ```
 
 Try to scale the application and launch 2 Spring Boot applications
 
 ```bash
-mvn spring-boot:run
+mvn install -pl order-service
+mvn spring-boot:run -pl order-service
 
 and 
 
-mvn spring-boot:run -Dserver.port=8081
+mvn spring-boot:run -Dserver.port=8081 -pl order-service
 ```
 
 And now test 
@@ -54,6 +55,9 @@ http -s solarized http://localhost:8080/all-orders
 http -s solarized -f POST http://localhost:8080/ship-order
 http -s solarized -f POST http://localhost:8080/ship-order
 http -s solarized -f POST http://localhost:8080/ship-order
+
+http -s solarized http://localhost:8080/all-orders
+http -s solarized http://localhost:8081/all-orders
 ```
 
 
