@@ -25,7 +25,7 @@ http http://localhost:8080/all-orders
 
 ## Using Eureka
 
-Start the h2 database
+Start the h2 database server and Web server at the address http://localhost:9090
 ```bash
 mvn exec:java -pl h2-server
 ```
