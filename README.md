@@ -23,6 +23,35 @@ http -f POST http://localhost:8080/ship-order
 http http://localhost:8080/all-orders
 ```
 
+## Using Eureka
+
+Boot the Eureka server
+
+```bash
+mvn spring-boot:run
+```
+
+Try to scale the application and launch 2 Spring Boot applications
+
+```bash
+mvn spring-boot:run -Dspring.profiles.active=app-a
+
+and 
+
+mvn spring-boot:run -Dspring.profiles.active=app-b -Dserver.port=8081
+```
+
+And now test 
+
+```bash
+http -s solarized http://localhost:8080/all-orders
+
+http -s solarized -f POST http://localhost:8080/ship-order
+http -s solarized -f POST http://localhost:8080/ship-order
+http -s solarized -f POST http://localhost:8080/ship-order
+```
+
+
 ## Using JGroups
 
 Try to scale the application and launch 2 Spring Boot applications
