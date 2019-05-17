@@ -1,4 +1,4 @@
-package dev.snowdrop.axon.order.gui.querymodel;
+package dev.snowdrop.axon.order.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;

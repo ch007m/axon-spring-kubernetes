@@ -1,4 +1,4 @@
-package dev.snowdrop.axon.order.gui;
+package dev.snowdrop.axon.order.service;
 
 import java.util.List;
 import java.util.UUID;
