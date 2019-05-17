@@ -7,7 +7,7 @@ cd order-service
 mvn clean spring-boot:run  -Daxon.axonserver.suppressDownloadMessage=true
 ```
 
-Then, to order a product, then execute the following commands
+Then, to manage your orders, then execute the following commands
 
 ```
 curl -X POST http://localhost:8080/ship-order
