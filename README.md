@@ -23,17 +23,17 @@ http -f POST http://localhost:8080/ship-order
 http http://localhost:8080/all-orders
 ```
 
-## Using Eureka
+## Using Axon Server
 
 Start the h2 database server and Web server at the address http://localhost:9090
 ```bash
 mvn exec:java -pl h2-server
 ```
 
-Boot the Eureka server
+Boot the Axon server
 
 ```bash
-mvn spring-boot:run -pl eureka-server
+java -jar axonserver-4.1.2.jar 
 ```
 
 Try to scale the application and launch 2 Spring Boot applications
@@ -54,15 +54,15 @@ http -s solarized http://localhost:8080/all-orders
 
 http -s solarized -f POST http://localhost:8080/ship-order
 http -s solarized -f POST http://localhost:8080/ship-order
-http -s solarized -f POST http://localhost:8080/ship-order
 
+http -s solarized -f POST http://localhost:8081/ship-order
 http -s solarized -f POST http://localhost:8081/ship-order
 
 http -s solarized http://localhost:8080/all-orders
 http -s solarized http://localhost:8081/all-orders
 ```
 
-**REMARK**: We only get orders from on of the application. Really strange and weird !!
+**REMARK**: We get the records created from both nodes but sometimes we must query again
 
 ## Using JGroups
 
