@@ -54,8 +54,8 @@ http -s solarized http://localhost:8080/all-orders
 
 http -s solarized -f POST http://localhost:8080/ship-order
 http -s solarized -f POST http://localhost:8080/ship-order
-http -s solarized -f POST http://localhost:8080/ship-order
 
+http -s solarized -f POST http://localhost:8081/ship-order
 http -s solarized -f POST http://localhost:8081/ship-order
 
 http -s solarized http://localhost:8080/all-orders
