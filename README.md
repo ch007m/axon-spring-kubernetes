@@ -62,6 +62,7 @@ http -s solarized http://localhost:8080/all-orders
 http -s solarized http://localhost:8081/all-orders
 ```
 
+**REMARK**: We only get orders from on of the application. Really strange and weird !!
 
 ## Using JGroups
 
