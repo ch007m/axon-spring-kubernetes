@@ -1,5 +1,7 @@
 # Axon & Spring Cloud Kubernetes
 
+## Simple case
+
 To test the order service
 
 ```bash
@@ -20,6 +22,8 @@ or using httpie tool
 http -f POST http://localhost:8080/ship-order
 http http://localhost:8080/all-orders
 ```
+
+## Using JGroups
 
 Try to scale the application and launch 2 Spring Boot applications
 
