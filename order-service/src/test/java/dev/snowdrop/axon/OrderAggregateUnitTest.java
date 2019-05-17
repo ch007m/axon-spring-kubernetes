@@ -7,12 +7,12 @@ import org.axonframework.test.aggregate.AggregateTestFixture;
 import org.axonframework.test.aggregate.FixtureConfiguration;
 import org.junit.*;
 
-import dev.snowdrop.axon.order.coreapi.commands.commands.ConfirmOrderCommand;
-import dev.snowdrop.axon.order.coreapi.commands.commands.PlaceOrderCommand;
-import dev.snowdrop.axon.order.coreapi.commands.commands.ShipOrderCommand;
-import dev.snowdrop.axon.order.coreapi.events.events.OrderConfirmedEvent;
-import dev.snowdrop.axon.order.coreapi.events.events.OrderPlacedEvent;
-import dev.snowdrop.axon.order.coreapi.events.events.OrderShippedEvent;
+import dev.snowdrop.axon.order.coreapi.commands.ConfirmOrderCommand;
+import dev.snowdrop.axon.order.coreapi.commands.PlaceOrderCommand;
+import dev.snowdrop.axon.order.coreapi.commands.ShipOrderCommand;
+import dev.snowdrop.axon.order.coreapi.events.OrderConfirmedEvent;
+import dev.snowdrop.axon.order.coreapi.events.OrderPlacedEvent;
+import dev.snowdrop.axon.order.coreapi.events.OrderShippedEvent;
 
 public class OrderAggregateUnitTest {
 

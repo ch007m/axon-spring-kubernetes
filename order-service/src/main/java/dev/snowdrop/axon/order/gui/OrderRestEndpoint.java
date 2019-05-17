@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.snowdrop.axon.order.coreapi.commands.commands.ConfirmOrderCommand;
-import dev.snowdrop.axon.order.coreapi.commands.commands.PlaceOrderCommand;
-import dev.snowdrop.axon.order.coreapi.commands.commands.ShipOrderCommand;
-import dev.snowdrop.axon.order.coreapi.queries.queries.FindAllOrderedProductsQuery;
-import dev.snowdrop.axon.order.coreapi.queries.queries.OrderedProduct;
+import dev.snowdrop.axon.order.coreapi.commands.ConfirmOrderCommand;
+import dev.snowdrop.axon.order.coreapi.commands.PlaceOrderCommand;
+import dev.snowdrop.axon.order.coreapi.commands.ShipOrderCommand;
+import dev.snowdrop.axon.order.coreapi.queries.FindAllOrderedProductsQuery;
+import dev.snowdrop.axon.order.coreapi.queries.OrderedProduct;
 
 @RestController
 public class OrderRestEndpoint {

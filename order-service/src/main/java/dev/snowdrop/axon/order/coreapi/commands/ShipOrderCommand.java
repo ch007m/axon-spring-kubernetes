@@ -1,31 +1,25 @@
-package dev.snowdrop.axon.order.coreapi.commands.commands;
+package dev.snowdrop.axon.order.coreapi.commands;
 
 import java.util.Objects;
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-public class PlaceOrderCommand {
+public class ShipOrderCommand {
 
     @TargetAggregateIdentifier
     private final String orderId;
-    private final String product;
 
-    public PlaceOrderCommand(String orderId, String product) {
+    public ShipOrderCommand(String orderId) {
         this.orderId = orderId;
-        this.product = product;
     }
 
     public String getOrderId() {
         return orderId;
     }
 
-    public String getProduct() {
-        return product;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(orderId, product);
+        return Objects.hash(orderId);
     }
 
     @Override
@@ -36,16 +30,14 @@ public class PlaceOrderCommand {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        final PlaceOrderCommand other = (PlaceOrderCommand) obj;
-        return Objects.equals(this.orderId, other.orderId)
-                && Objects.equals(this.product, other.product);
+        final ShipOrderCommand other = (ShipOrderCommand) obj;
+        return Objects.equals(this.orderId, other.orderId);
     }
 
     @Override
     public String toString() {
-        return "PlaceOrderCommand{" +
+        return "ShipOrderCommand{" +
                 "orderId='" + orderId + '\'' +
-                ", product='" + product + '\'' +
                 '}';
     }
 }

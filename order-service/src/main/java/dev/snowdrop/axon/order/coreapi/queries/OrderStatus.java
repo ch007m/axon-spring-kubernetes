@@ -1,4 +1,4 @@
-package dev.snowdrop.axon.order.coreapi.queries.queries;
+package dev.snowdrop.axon.order.coreapi.queries;
 
 public enum OrderStatus {
 

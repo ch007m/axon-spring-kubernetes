@@ -9,11 +9,11 @@ import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.stereotype.Service;
 
-import dev.snowdrop.axon.order.coreapi.events.events.OrderConfirmedEvent;
-import dev.snowdrop.axon.order.coreapi.events.events.OrderPlacedEvent;
-import dev.snowdrop.axon.order.coreapi.events.events.OrderShippedEvent;
-import dev.snowdrop.axon.order.coreapi.queries.queries.FindAllOrderedProductsQuery;
-import dev.snowdrop.axon.order.coreapi.queries.queries.OrderedProduct;
+import dev.snowdrop.axon.order.coreapi.events.OrderConfirmedEvent;
+import dev.snowdrop.axon.order.coreapi.events.OrderPlacedEvent;
+import dev.snowdrop.axon.order.coreapi.events.OrderShippedEvent;
+import dev.snowdrop.axon.order.coreapi.queries.FindAllOrderedProductsQuery;
+import dev.snowdrop.axon.order.coreapi.queries.OrderedProduct;
 
 @Service
 public class OrderedProductsEventHandler {

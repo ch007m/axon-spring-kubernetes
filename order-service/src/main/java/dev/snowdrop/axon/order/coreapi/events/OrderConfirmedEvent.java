@@ -1,12 +1,12 @@
-package dev.snowdrop.axon.order.coreapi.events.events;
+package dev.snowdrop.axon.order.coreapi.events;
 
 import java.util.Objects;
 
-public class OrderShippedEvent {
+public class OrderConfirmedEvent {
 
     private final String orderId;
 
-    public OrderShippedEvent(String orderId) {
+    public OrderConfirmedEvent(String orderId) {
         this.orderId = orderId;
     }
 
@@ -27,13 +27,13 @@ public class OrderShippedEvent {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        final OrderShippedEvent other = (OrderShippedEvent) obj;
+        final OrderConfirmedEvent other = (OrderConfirmedEvent) obj;
         return Objects.equals(this.orderId, other.orderId);
     }
 
     @Override
     public String toString() {
-        return "OrderShippedEvent{" +
+        return "OrderConfirmedEvent{" +
                 "orderId='" + orderId + '\'' +
                 '}';
     }

@@ -1,13 +1,16 @@
-package dev.snowdrop.axon.order.coreapi.events.events;
+package dev.snowdrop.axon.order.coreapi.commands;
 
 import java.util.Objects;
 
-public class OrderPlacedEvent {
+import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
+public class PlaceOrderCommand {
+
+    @TargetAggregateIdentifier
     private final String orderId;
     private final String product;
 
-    public OrderPlacedEvent(String orderId, String product) {
+    public PlaceOrderCommand(String orderId, String product) {
         this.orderId = orderId;
         this.product = product;
     }
@@ -33,14 +36,14 @@ public class OrderPlacedEvent {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        final OrderPlacedEvent other = (OrderPlacedEvent) obj;
+        final PlaceOrderCommand other = (PlaceOrderCommand) obj;
         return Objects.equals(this.orderId, other.orderId)
                 && Objects.equals(this.product, other.product);
     }
 
     @Override
     public String toString() {
-        return "OrderPlacedEvent{" +
+        return "PlaceOrderCommand{" +
                 "orderId='" + orderId + '\'' +
                 ", product='" + product + '\'' +
                 '}';

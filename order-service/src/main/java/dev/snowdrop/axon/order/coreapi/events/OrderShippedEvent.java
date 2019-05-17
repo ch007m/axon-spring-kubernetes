@@ -1,15 +1,12 @@
-package dev.snowdrop.axon.order.coreapi.commands.commands;
-
-import org.axonframework.modelling.command.TargetAggregateIdentifier;
+package dev.snowdrop.axon.order.coreapi.events;
 
 import java.util.Objects;
 
-public class ConfirmOrderCommand {
+public class OrderShippedEvent {
 
-    @TargetAggregateIdentifier
     private final String orderId;
 
-    public ConfirmOrderCommand(String orderId) {
+    public OrderShippedEvent(String orderId) {
         this.orderId = orderId;
     }
 
@@ -30,13 +27,13 @@ public class ConfirmOrderCommand {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        final ConfirmOrderCommand other = (ConfirmOrderCommand) obj;
+        final OrderShippedEvent other = (OrderShippedEvent) obj;
         return Objects.equals(this.orderId, other.orderId);
     }
 
     @Override
     public String toString() {
-        return "ConfirmOrderCommand{" +
+        return "OrderShippedEvent{" +
                 "orderId='" + orderId + '\'' +
                 '}';
     }
