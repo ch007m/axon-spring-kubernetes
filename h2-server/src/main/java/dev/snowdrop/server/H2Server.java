@@ -8,17 +8,11 @@ import org.h2.tools.Server;
 
 public class H2Server {
     public static void main(String[] args) {
-        String[] params = new String[]{"-tcpPort", "8081", "-tcp", "-tcpAllowOthers", "-baseDir", "./h2-server","-ifNotExists"};
-        Server h2serve = new Server();
+        String[] params = new String[]{"-tcpPort", "8556", "-tcp", "-tcpAllowOthers", "-baseDir", "./h2-server","-ifNotExists","-trace"};
         try {
-            Server s = Server.createTcpServer(params);
-            s.start();
-            System.out.println(s);
-            Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost:8081/axondb");
-            System.out.println(conn);
-            conn.close();
-            Thread.sleep(Long.MAX_VALUE);
-        } catch (SQLException | InterruptedException e) {
+            Server s = Server.createTcpServer(params).start();
+            System.out.println(s.getStatus()); //prints out the server's status
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
