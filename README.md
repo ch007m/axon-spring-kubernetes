@@ -62,6 +62,8 @@ http -s solarized http://localhost:8081/all-orders
 http -s solarized http://localhost:8080/all-orders
 ```
 
+## Using Eureka with a LoadBalancer
+
 Load balance the Command requests using the Spring Cloud Gateway (= Eureka Client, server is running on port 8760)
 
 ```bash
