@@ -6,7 +6,7 @@ To test the order service
 
 ```bash
 cd order-service
-mvn clean spring-boot:run  -Daxon.axonserver.suppressDownloadMessage=true
+mvn compile spring-boot:run  -Daxon.axonserver.suppressDownloadMessage=true
 ```
 
 Then, to manage your orders, then execute the following commands
@@ -27,24 +27,24 @@ http http://localhost:8080/all-orders
 
 Start the h2 database server and Web server at the address http://localhost:9090
 ```bash
-mvn exec:java -pl h2-server
+mvn compile exec:java -pl h2-server
 ```
 
 Boot the Eureka server
 
 ```bash
-mvn spring-boot:run -pl eureka-server
+mvn compile exec:java -pl eureka-server
 ```
 
 Try to scale the application and launch 2 Spring Boot applications
 
 ```bash
 mvn install -pl order-service
-mvn spring-boot:run -pl order-service
+mvn compile spring-boot:run -pl order-service -Dserver.port=8080
 
 and 
 
-mvn spring-boot:run -Dserver.port=8081 -pl order-service
+mvn spring-boot:run -pl order-service -Dserver.port=8081
 ```
 
 And now test 
@@ -58,8 +58,22 @@ http -s solarized -f POST http://localhost:8080/ship-order
 http -s solarized -f POST http://localhost:8081/ship-order
 http -s solarized -f POST http://localhost:8081/ship-order
 
-http -s solarized http://localhost:8080/all-orders
 http -s solarized http://localhost:8081/all-orders
+http -s solarized http://localhost:8080/all-orders
+```
+
+Load balance the Command requests using the Spring Cloud Gateway (= Eureka Client)
+
+```bash
+mvn compile exec:java -pl gateway
+http -s solarized http://localhost:8760/all-orders
+
+http -s solarized -f POST http://localhost:8760/ship-order
+http -s solarized -f POST http://localhost:8760/ship-order
+http -s solarized -f POST http://localhost:8760/ship-order
+http -s solarized -f POST http://localhost:8760/ship-order
+
+http -s solarized http://localhost:8760/all-orders
 ```
 
 **REMARK**: We only get orders from on of the application. Really strange and weird !!

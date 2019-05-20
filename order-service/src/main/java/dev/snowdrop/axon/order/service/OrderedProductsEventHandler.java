@@ -7,6 +7,10 @@ import java.util.Map;
 
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import dev.snowdrop.axon.order.coreapi.events.OrderConfirmedEvent;
@@ -19,6 +23,10 @@ import dev.snowdrop.axon.order.coreapi.queries.OrderedProduct;
 public class OrderedProductsEventHandler {
 
     private final Map<String, OrderedProduct> orderedProducts = new HashMap<>();
+    private static final Logger logger = LogManager.getLogger(OrderedProductsEventHandler.class);
+
+    @Autowired
+    Environment environment;
 
     @EventHandler
     public void on(OrderPlacedEvent event) {
@@ -30,6 +38,7 @@ public class OrderedProductsEventHandler {
     public void on(OrderConfirmedEvent event) {
         orderedProducts.computeIfPresent(event.getOrderId(), (orderId, orderedProduct) -> {
             orderedProduct.setOrderConfirmed();
+            logger.info("Order shipped :: " + orderId + "by machine ::" + environment.getProperty("local.server.port"));
             return orderedProduct;
         });
     }
@@ -38,6 +47,7 @@ public class OrderedProductsEventHandler {
     public void on(OrderShippedEvent event) {
         orderedProducts.computeIfPresent(event.getOrderId(), (orderId, orderedProduct) -> {
             orderedProduct.setOrderShipped();
+
             return orderedProduct;
         });
     }
